@@ -3,14 +3,25 @@ import {useState} from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Image from 'next/image'
-const onLogin = ()=>{
-    console.log("logged in")
-}
+import axios from 'axios'
 export default function Login (){
-    const[user, setUser] = useState({
-        username: null,
-        password: null
+    interface user {
+        username: string;
+        password: string;
+    }
+    const[user, setUser] = useState<user>({
+        username: '',
+        password: ''
     })
+    const onLogin = async ()=>{
+        try {
+            console.log(user)
+            await axios.post('/api/users/login',user)
+        } catch (err) {
+            console.log(err)
+        }
+        console.log("logged in")
+    }
     return(
         <>
         <div className='flex flex-col items-center justify-center py-2 min-h-screen'>

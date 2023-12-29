@@ -5,7 +5,11 @@ import 'react-calendar/dist/Calendar.css'
 import { add, format } from 'date-fns'
 import { STORE_OPENING_TIME, STORE_CLOSING_TIME, INTERVAL } from '@/config/config'
 export default function Calendar() {
-    const [date, setDate] = useState({
+    interface typeDate {
+        justDate: Date | null;
+        dateTime: Date | null;
+    }
+    const [date, setDate] = useState<typeDate>({
         justDate: null,
         dateTime: null
     })
@@ -20,7 +24,7 @@ export default function Calendar() {
         const beginning = add(justDate, { hours: STORE_OPENING_TIME })
         const end = add(justDate, { hours: STORE_CLOSING_TIME })
         const interval = INTERVAL
-        const times = []
+        const times:Date[] = []
         for (let i = beginning; i < end; i = add(i, { minutes: interval })) {
             times.push(i)
         }

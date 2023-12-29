@@ -3,6 +3,7 @@ import {useState} from 'react'
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Image from 'next/image'
+import MultiValueSelector from '@/components/multiValueMenu'
 const onSignup = ()=>{
     console.log("signed Up!")
 }
@@ -19,6 +20,7 @@ export default function signUp (){
     return(
         <>
         <div className='flex flex-col items-center justify-center py-2 min-h-screen'>
+            
             <Image 
                 src="/lock.png" 
                 width={50} 
